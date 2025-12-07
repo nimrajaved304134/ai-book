@@ -41,6 +41,8 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: 'book/docs',
+          routeBasePath: 'docs',
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -94,19 +96,19 @@ const config = {
             items: [
               {
                 label: 'Chapter 1: ROS 2',
-                to: '/docs/category/chapter-1-ros-2',
+                to: '/docs/module-1',
               },
               {
                 label: 'Chapter 2: Gazebo & Unity Simulation',
-                to: '/docs/category/chapter-2-gazebo-unity-simulation',
+                to: '/docs/module-2',
               },
               {
                 label: 'Chapter 3: NVIDIA Isaac',
-                to: '/docs/category/chapter-3-nvidia-isaac',
+                to: '/docs/module-3',
               },
               {
                 label: 'Chapter 4: Vision-Language-Action',
-                to: '/docs/category/chapter-4-vision-language-action',
+                to: '/docs/module-4',
               },
             ],
           },

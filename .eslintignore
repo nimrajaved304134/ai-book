@@ -1,0 +1,8 @@
+node_modules/
+build/
+dist/
+.docusaurus/
+.cache/
+coverage/
+*.min.js
+*.config.js

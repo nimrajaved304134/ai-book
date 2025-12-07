@@ -43,8 +43,6 @@ The ROS 2 architecture includes:
 - ROS 2 client libraries (rclcpp, rclpy)
 - ROS 2 core tools (ros2 command line tools)
 
-```
-
 
 ## Code Examples (Python/ROS 2)
 Here's a simple example of a ROS 2 publisher node in Python:

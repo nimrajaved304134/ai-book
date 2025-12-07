@@ -1,0 +1,9 @@
+node_modules/
+build/
+dist/
+.docusaurus/
+.cache/
+coverage/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
