@@ -1,0 +1,40 @@
+.card {
+  border: 1px solid #eee;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cardTitle {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.chapterNumber {
+  color: #25c2a0;
+  font-weight: 600;
+}
+
+.cardDescription {
+  margin-bottom: 1rem;
+  color: #606770;
+  flex-grow: 1;
+}
+
+.cardButton {
+  margin-top: auto;
+}

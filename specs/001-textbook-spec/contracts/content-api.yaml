@@ -1,0 +1,135 @@
+# API Contract for Textbook Content Management
+
+## Overview
+This document describes the API for managing textbook content, including chapters, lessons, exercises, and quizzes.
+
+## Base URL
+`https://api.textbook.example.com/v1`
+
+## Content Endpoints
+
+### Get All Chapters
+- **Endpoint**: `GET /chapters`
+- **Description**: Retrieve a list of all textbook chapters
+- **Response**:
+  ```
+  Status: 200 OK
+  Body:
+  {
+    "chapters": [
+      {
+        "id": "module-1",
+        "title": "Introduction to Physical AI",
+        "description": "This chapter covers the fundamentals of Physical AI concepts",
+        "lessonsCount": 13,
+        "learningObjectives": [
+          "Understand basic Physical AI concepts",
+          "Explore key algorithms and applications"
+        ]
+      }
+    ]
+  }
+  ```
+
+### Get Chapter by ID
+- **Endpoint**: `GET /chapters/{chapterId}`
+- **Description**: Retrieve details for a specific chapter
+- **Parameters**:
+  - `chapterId`: String - The unique identifier for the chapter (e.g., "module-1")
+- **Response**:
+  ```
+  Status: 200 OK
+  Body:
+  {
+    "id": "module-1",
+    "title": "Introduction to Physical AI",
+    "description": "This chapter covers the fundamentals of Physical AI concepts",
+    "lessons": [
+      {
+        "id": "lesson-1",
+        "title": "Defining Physical AI",
+        "lessonNumber": 1,
+        "introduction": "This lesson introduces the concept of Physical AI...",
+        "concepts": "Physical AI encompasses the integration of artificial intelligence techniques with physical systems...",
+        "technicalDeepDive": "In practice, Physical AI systems require...",
+        "diagrams": [
+          "/img/physical-ai-concept.png"
+        ],
+        "codeExamples": [
+          {
+            "language": "Python",
+            "code": "def physical_ai_example():\n    print('Hello Physical AI')",
+            "description": "Basic Physical AI function example"
+          }
+        ],
+        "exercises": [
+          {
+            "question": "What is Physical AI?",
+            "type": "short-answer",
+            "difficulty": "beginner",
+            "solution": "Physical AI is the integration of artificial intelligence techniques with physical systems...",
+            "hints": [
+              "Think about the combination of AI and physical systems"
+            ]
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which of the following is NOT a key aspect of Physical AI?",
+            "options": [
+              "Integration with physical systems",
+              "Real-world interaction",
+              "Purely theoretical frameworks",
+              "Embodied cognition"
+            ],
+            "correctAnswer": "Purely theoretical frameworks",
+            "explanation": "Physical AI specifically involves interaction with physical systems, not purely theoretical frameworks",
+            "difficulty": "intermediate"
+          }
+        ],
+        "summary": "This lesson covered the fundamental concepts of Physical AI...",
+        "keyTerms": [
+          "Physical AI",
+          "Embodied Cognition",
+          "Real-world Interaction"
+        ],
+        "learningObjectives": [
+          "Define Physical AI",
+          "Understand its applications"
+        ]
+      }
+    ]
+  }
+  ```
+
+### Get Lesson by ID
+- **Endpoint**: `GET /chapters/{chapterId}/lessons/{lessonId}`
+- **Description**: Retrieve details for a specific lesson within a chapter
+- **Parameters**:
+  - `chapterId`: String - The unique identifier for the chapter
+  - `lessonId`: String - The unique identifier for the lesson
+- **Response**: Similar to the lesson object shown in the chapter response above
+
+### Search Content
+- **Endpoint**: `GET /search?q={query}`
+- **Description**: Search across all textbook content
+- **Parameters**:
+  - `q`: String - The search query
+- **Response**:
+  ```
+  Status: 200 OK
+  Body:
+  {
+    "results": [
+      {
+        "type": "lesson",
+        "id": "lesson-5",
+        "title": "ROS 2 Basics",
+        "chapterId": "module-2",
+        "chapterTitle": "Robot Operating System",
+        "preview": "This lesson covers the fundamentals of ROS 2...",
+        "relevanceScore": 0.95
+      }
+    ]
+  }
+  ```
