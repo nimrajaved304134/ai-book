@@ -1,16 +1,13 @@
-
-
-
 import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+import * as path from 'path';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
-const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+/** @type {import('@docusaurus/types').Config} */
+const config = {
+  title: 'Physical AI & Humanoid Robotics Textbook',
+  tagline: 'Comprehensive educational resource for developing AI-powered humanoid robots',
+  favicon: 'img/robot-icon.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -18,17 +15,18 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://your-physical-ai-book.netlify.app',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'agenticai-book', // Usually your GitHub org/user name.
+  projectName: 'agenticai-book', // Usually your repo name.
 
   onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -47,7 +45,8 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/agenticai-book/agenticai-book/tree/main/',
+          routeBasePath: '/docs', // Serve docs at /docs instead of /
         },
         blog: {
           showReadingTime: true,
@@ -58,7 +57,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/agenticai-book/agenticai-book/tree/main/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -67,32 +66,32 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-      } satisfies Preset.Options,
+      } satisfies import('@docusaurus/preset-classic').Options,
     ],
   ],
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/physical-ai-social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'My Site',
+      title: 'Physical AI & Humanoid Robotics',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'Physical AI Book Logo',
+        src: 'img/robot-icon.png',
       },
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Textbook',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/agenticai-book/agenticai-book',
           label: 'GitHub',
           position: 'right',
         },
@@ -102,11 +101,27 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Textbook',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Introduction',
               to: '/docs/intro',
+            },
+            {
+              label: 'Module 1: ROS 2 Fundamentals',
+              to: '/docs/module-1/lesson-1',
+            },
+            {
+              label: 'Module 2: Simulation with Gazebo & Unity',
+              to: '/docs/module-2/lesson-1',
+            },
+            {
+              label: 'Module 3: NVIDIA Isaac Platform',
+              to: '/docs/module-3/lesson-1',
+            },
+            {
+              label: 'Module 4: Vision-Language-Action Models',
+              to: '/docs/module-4/lesson-1',
             },
           ],
         },
@@ -122,8 +137,8 @@ const config: Config = {
               href: 'https://discordapp.com/invite/docusaurus',
             },
             {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'Twitter',
+              href: 'https://twitter.com/docusaurus',
             },
           ],
         },
@@ -136,18 +151,38 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/agenticai-book/agenticai-book',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['python', 'bash', 'json', 'yaml'],
     },
-  } satisfies Preset.ThemeConfig,
+  } satisfies import('@docusaurus/preset-classic').ThemeConfig,
+  
+  // Add custom plugins
+  plugins: [
+    // Plugin to use React components in MDX
+    async function myPlugin(context, options) {
+      return {
+        name: 'custom-component-plugin',
+        configureWebpack(config, isServer, utils) {
+          return {
+            resolve: {
+              alias: {
+                '@components': path.resolve(__dirname, './src/components'),
+              },
+            },
+          };
+        },
+      };
+    },
+  ],
 };
 
 export default config;
