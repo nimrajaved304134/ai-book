@@ -208,3 +208,6 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Qwen Added Memories
+- Today's date is Thursday, December 25, 2025. Working on the agenticai-book project to address Vercel deployment issues with the Docusaurus textbook site.

@@ -1,0 +1,17 @@
+{
+  "builds": [
+    {
+      "src": "book/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "book/build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "book/build/$1"
+    }
+  ]
+}

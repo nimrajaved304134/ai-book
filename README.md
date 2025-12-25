@@ -27,6 +27,8 @@ This command generates static content into the `build` directory and can be serv
 
 ## Deployment
 
+### GitHub Pages
+
 The site is configured for deployment to GitHub Pages. To deploy:
 
 1. Update the `organizationName` and `projectName` in `docusaurus.config.js`
@@ -39,6 +41,19 @@ The site is configured for deployment to GitHub Pages. To deploy:
    ```
 
 Alternatively, if you're using GitHub Actions, push your changes to the main branch and the site will be automatically deployed via the workflow defined in `.github/workflows/deploy.yml`.
+
+### Vercel
+
+For deployment to Vercel, the configuration is set up to build from the `book/` directory. The `vercel.json` file specifies that the build command should target `book/package.json` and serve from `book/build`.
+
+### Deploying the Textbook Site
+
+This repository contains a textbook site in the `book/` directory built with Docusaurus. To deploy directly:
+
+1. Navigate to the book directory: `cd book`
+2. Install dependencies: `npm install`
+3. Build the textbook site: `npm run build`
+4. Serve the static files from the `book/build` directory
 
 ## File Structure
 
